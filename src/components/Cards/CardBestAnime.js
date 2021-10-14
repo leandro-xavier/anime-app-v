@@ -35,7 +35,7 @@ const getAnimeNinja = async () => {
         <>
         {
             item.map(dat => (
-                <Card style={{ width: '12rem',height:'550px', float:'right'}}>
+                <Card  key={dat.id} style={{ width: '12rem',height:'550px', float:'right'}}>
                 <Card.Img variant="top" src={dat.imagen} />
                 <Card.Body>
                     <Card.Title>{dat.titles}</Card.Title>

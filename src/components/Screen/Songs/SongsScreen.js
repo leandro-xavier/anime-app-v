@@ -1,6 +1,6 @@
 import React,{useEffect, useState} from 'react';
 import ReactAudioPlayer from 'react-audio-player';
-import {Card, Button, Nav} from 'react-bootstrap'
+import {Card, Button} from 'react-bootstrap'
 import { useParams } from 'react-router-dom';
 import { Navigation } from '../../Navbar/Navigation'
 import '../../../styles/screen/episodes.css'
@@ -12,6 +12,7 @@ export const SongsScreen = (props) => {
     
     useEffect(() => {
        getSong()
+       //eslint-disable-next-line
     }, []);
 
     const {id} = useParams();

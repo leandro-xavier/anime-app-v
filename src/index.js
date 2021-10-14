@@ -8,7 +8,6 @@ import '../node_modules/video-react/dist/video-react.css';
 
 ReactDOM.render(
 
-    <
-    AnimeApp / > ,
+    <AnimeApp / > ,
     document.getElementById('root')
 );

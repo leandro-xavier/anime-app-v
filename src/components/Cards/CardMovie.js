@@ -32,7 +32,7 @@ export const CardMovie = () => {
         <div>
             {
                 item.map(ani => (
-                <Card style={{ width: '12rem', height:'450px', float:'right'}}>
+                <Card key={ani.id} style={{ width: '12rem', height:'450px', float:'right'}}>
                 <Card.Img variant="top" src={ani.imagen} />
                 <Card.Body>
                     <Card.Title>{ani.titles}</Card.Title>

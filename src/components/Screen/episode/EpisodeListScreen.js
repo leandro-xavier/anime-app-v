@@ -11,6 +11,7 @@ export const EpisodeListScreen = (props) => {
     
     useEffect(() => {
        getAnime()
+       //eslint-disable-next-line
     }, []);
 
     const {id} = useParams();

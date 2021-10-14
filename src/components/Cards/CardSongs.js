@@ -3,7 +3,7 @@ import ReactAudioPlayer from 'react-audio-player';
 import { Link } from 'react-router-dom';
 import {Card, Button} from 'react-bootstrap';
 
-export const CardSongs = () => {
+export const CardSongs = (anime) => {
     const [item, setItem] = useState([])
 
     useEffect(() => {
@@ -33,13 +33,12 @@ export const CardSongs = () => {
         <div>
             {
                 item.map(ani => (
-                <Card style={{ width: '570px', height:'120px'}}>
-                <Card.Img variant="top" src='' />
+                <Card  key={ani.id} style={{ width: '570px', height:'120px'}}>
                 <Card.Body>
                     <Card.Title style={{float:'left'}}>{ani.title}</Card.Title>
                     
                     <Button style={{float:'right' , marginRight:'5px', marginTop:'40px'}} variant="dark" as ={Link} to={`/ver/song/${ani.id}`}>ver cancion</Button>
-                    <Card.Text style={{float:'right' , marginRight:'5px'}} ><ReactAudioPlayer style={{width:'150px', marginTop:'30px'}} src={ani.url_pre}  controls/></Card.Text>
+                    <ReactAudioPlayer style={{width:'150px', marginTop:'30px'}} src={ani.url_pre}  controls/>
                 </Card.Body>
                
                 </Card>

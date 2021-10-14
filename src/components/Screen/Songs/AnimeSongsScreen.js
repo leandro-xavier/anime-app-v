@@ -11,6 +11,7 @@ export const AnimeSongsScreen = (props) => {
 
     useEffect(() => {
         getListEpisode()
+        //eslint-disable-next-line
     }, []);
 
     const {id} = useParams();

@@ -10,6 +10,7 @@ export const ListScreen = (props) => {
 
     useEffect(() => {
         getListEpisode()
+        //eslint-disable-next-line
     }, []);
 
     const {id} = useParams();
