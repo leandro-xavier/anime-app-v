@@ -2,9 +2,9 @@
 *Esta es una aplicación escrita en reactjs y bootstrap-react*
 
 ## Pasos de ejecución
-1-clonar repositorio
-2-npm install
-3-npm start 
+1. clonar repositorio
+2. npm install
+3. npm start 
 
 ## Ver la apliación en línea
 [Enlace](https://leandro-xavier.github.io/anime-app-v/)
