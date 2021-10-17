@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Card } from 'react-bootstrap';
 import { CardMovie } from '../../Cards/CardMovie';
 import { CardSongs } from '../../Cards/CardSongs';
-import { CardBestAnime } from '../../Cards/CardBestAnime'
-import { Navigation } from '../../Navbar/Navigation'
+import { CardBestAnime } from '../../Cards/CardBestAnime';
+
+
 
 export const HomeScreen = ({...props}) => {
 
@@ -37,7 +38,7 @@ export const HomeScreen = ({...props}) => {
     return (
     
            <div style={{backgroundColor:'black'}}>
-               <Navigation/>
+             
                         <div> 
                             <Card className="bg-dark text-white">
                                 <Card.Img src={old.banner} alt="Card image" />

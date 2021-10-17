@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom'
 import {Card, Button} from 'react-bootstrap';
-import { Navigation } from '../../Navbar/Navigation'
+
 
 export const DirectorioSongScreen = ({cover_image}) => {
 
@@ -34,7 +34,7 @@ export const DirectorioSongScreen = ({cover_image}) => {
 
     return (
         <>
-        <Navigation/>
+    
         {
             comic.map(son => (
                 <div>

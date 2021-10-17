@@ -1,7 +1,7 @@
 import React,{useEffect, useState} from 'react';
 import {Card} from 'react-bootstrap'
 import { useParams } from 'react-router-dom';
-import { Navigation } from '../../Navbar/Navigation'
+
 import '../../../styles/screen/episodes.css'
 import { ListScreen } from './ListScreen';
 
@@ -37,7 +37,7 @@ export const EpisodeListScreen = (props) => {
 
     return (
         <>
-            <Navigation/>   
+               
             <div className="header-episode">
                 <Card className="bg-dark text-white">
                     <Card.Img className="fondo" src={comic.banner_image} alt="Card image" />

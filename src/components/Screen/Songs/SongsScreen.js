@@ -2,7 +2,6 @@ import React,{useEffect, useState} from 'react';
 import ReactAudioPlayer from 'react-audio-player';
 import {Card, Button} from 'react-bootstrap'
 import { useParams } from 'react-router-dom';
-import { Navigation } from '../../Navbar/Navigation'
 import '../../../styles/screen/episodes.css'
 import { AnimeSongsScreen } from './AnimeSongsScreen';
 
@@ -38,7 +37,7 @@ export const SongsScreen = (props) => {
     return (
         
             <>
-                <Navigation/>  
+                
                     <div>
                         <Card style={{width: '800px' ,height:'480px',float:'right', marginRight:'110px', marginTop:'30px'}}>
                             <Card.Header as="h5" style={{color: 'black'}}>Autor: {comic.artist}</Card.Header>

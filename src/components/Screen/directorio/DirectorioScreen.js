@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom'
 import {Card, Button} from 'react-bootstrap';
-import { Navigation } from '../../Navbar/Navigation'
+
 import '../../../styles/screen/directorio.css'
 
 export const DirectorioScreen = ({cover_image}) => {
@@ -31,7 +31,7 @@ export const DirectorioScreen = ({cover_image}) => {
 
     return (
         <>
-        <Navigation/>
+     
         {
             comic.map(goku => (
                         <Card key={goku.id} style={{ width: '300px', height:'600px', float: 'right' }}>
