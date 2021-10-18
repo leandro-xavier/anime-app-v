@@ -19,8 +19,6 @@ export const AppRouter = () => {
                 <Switch>
                 
                     <Route exact path="/" component={HomeScreen}/>
-                    
-                    
                     <Route  path="/directorio/anime" component={DirectorioScreen}/>
                     <Route  path="/directorio/song" component={DirectorioSongScreen}/>
                     <Route  path="/ranking" component={RakingScreen}/>
