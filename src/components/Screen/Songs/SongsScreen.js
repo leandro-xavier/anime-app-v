@@ -20,6 +20,7 @@ export const SongsScreen = (props) => {
         const url = `https://api.aniapi.com/v1/song/${id}`;
         const response = await fetch(url);
         const {data} = await response.json();
+        console.log(data);
 
         const song = {
             id: data.id,
@@ -32,6 +33,7 @@ export const SongsScreen = (props) => {
             spotify_url: data.open_spotify_url,
             spotify_locale_url: data.local_spotify_url
         }
+        console.log(song);
         setComic(song)
     }
     return (

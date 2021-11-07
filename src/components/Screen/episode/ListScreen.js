@@ -28,7 +28,8 @@ export const ListScreen = (props) => {
                     id: res.anime_id,
                     title: res.title,
                     chapter: res.number,
-                    video: res.video
+                    video: res.video,
+                    id_ofi: res.id
                 }
             })
             setEpiso(episodes)
@@ -43,7 +44,7 @@ export const ListScreen = (props) => {
                 
                     {
                         episo.map(char => (
-                            <Card style={{width:'60%', margin:'10px'}}>
+                            <Card key={char.id_ofi} style={{width:'60%', margin:'10px'}}>
                                 <Card.Body>
                                     <Image style={{float: 'left', width:'150px', height:'100px'}} src={props.image} rounded />
                                     <Card.Title>{char.title}</Card.Title>

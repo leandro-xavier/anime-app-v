@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import '../../../styles/screen/episodes.css'
 import { ListScreen } from './ListScreen';
 
-export const EpisodeListScreen = (props) => {
+export const EpisodeListScreen = () => {
 
     const [comic, setComic] = useState({});
     
@@ -20,7 +20,9 @@ export const EpisodeListScreen = (props) => {
         const url = `https://api.aniapi.com/v1/anime/${id}`;
         const response = await fetch(url);
         const {data} = await response.json();
+        console.log(data);
 
+        
         const anime = {
             id: data.id,
             titles: data.titles.en,
@@ -42,8 +44,8 @@ export const EpisodeListScreen = (props) => {
                 <Card className="bg-dark text-white">
                     <Card.Img className="fondo" src={comic.banner_image} alt="Card image" />
                     <Card.ImgOverlay>
-                        <Card.Title style={{paddingTop: '20px', width:'600px'}}><h1 style={{backgroundColor:'white', color:'black', borderRadius:'30px', textAlign:'center'}}>{comic.titles}</h1></Card.Title>
-                        <Card.Text style={{paddingTop: '50px', width:'410px'}}><h3 style={{backgroundColor:'white', color:'black',borderRadius:'30px', textAlign:'center'}} >Estreno: {comic.season}</h3></Card.Text>
+                        <Card.Title style={{paddingTop: '20px', width:'600px'}}>{comic.titles}</Card.Title>
+                        <Card.Text style={{paddingTop: '50px', width:'410px'}}>Estreno: {comic.season}</Card.Text>
                     </Card.ImgOverlay>
                 </Card>
             </div>
@@ -58,7 +60,7 @@ export const EpisodeListScreen = (props) => {
                 </Card>
             </div>
             <div>
-                <ListScreen image={comic.image_cover} trailer={comic.trailer}/>
+                <ListScreen id={comic.id} image={comic.image_cover} trailer={comic.trailer}/>
             </div>
         </>
     )

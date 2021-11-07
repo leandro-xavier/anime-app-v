@@ -35,12 +35,12 @@ const getAnimeNinja = async () => {
         <>
         {
             item.map(dat => (
-                <Card  key={dat.id} style={{ width: '12rem',height:'550px', float:'right'}}>
+                <Card  key={dat.id} style={{ width: '9rem',height:'550px', float:'right'}}>
                 <Card.Img variant="top" src={dat.imagen} />
                 <Card.Body>
                     <Card.Title>{dat.titles}</Card.Title>
                     <Card.Footer>Año de estreno: {dat.year}</Card.Footer>
-                    <Button variant="dark" as ={Link} to='/ver'>Ver Anime</Button>
+                    <Button variant="dark" as ={Link} to={`/ver/${dat.id}`}>Ver Anime</Button>
                 </Card.Body>
                 </Card>
             ))

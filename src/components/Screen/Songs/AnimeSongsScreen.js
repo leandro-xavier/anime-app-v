@@ -23,7 +23,9 @@ export const AnimeSongsScreen = (props) => {
             const url = `https://api.aniapi.com/v1/anime/${id}`;
             const response = await fetch(url);
             const { data } = await response.json();
+            console.log(data);
 
+            
             const episodes = 
                  {
                     id: data.anime_id,
