@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/anime-app-v/static/css/main.77ae7fae.chunk.css",
-    "main.js": "/anime-app-v/static/js/main.e67d4d3a.chunk.js",
-    "main.js.map": "/anime-app-v/static/js/main.e67d4d3a.chunk.js.map",
+    "main.css": "/anime-app-v/static/css/main.51c90ef6.chunk.css",
+    "main.js": "/anime-app-v/static/js/main.6bbdbce0.chunk.js",
+    "main.js.map": "/anime-app-v/static/js/main.6bbdbce0.chunk.js.map",
     "runtime-main.js": "/anime-app-v/static/js/runtime-main.cb9b6900.js",
     "runtime-main.js.map": "/anime-app-v/static/js/runtime-main.cb9b6900.js.map",
     "static/css/2.6424772c.chunk.css": "/anime-app-v/static/css/2.6424772c.chunk.css",
-    "static/js/2.996b7d99.chunk.js": "/anime-app-v/static/js/2.996b7d99.chunk.js",
-    "static/js/2.996b7d99.chunk.js.map": "/anime-app-v/static/js/2.996b7d99.chunk.js.map",
+    "static/js/2.1cac0d25.chunk.js": "/anime-app-v/static/js/2.1cac0d25.chunk.js",
+    "static/js/2.1cac0d25.chunk.js.map": "/anime-app-v/static/js/2.1cac0d25.chunk.js.map",
     "index.html": "/anime-app-v/index.html",
     "static/css/2.6424772c.chunk.css.map": "/anime-app-v/static/css/2.6424772c.chunk.css.map",
-    "static/css/main.77ae7fae.chunk.css.map": "/anime-app-v/static/css/main.77ae7fae.chunk.css.map",
-    "static/js/2.996b7d99.chunk.js.LICENSE.txt": "/anime-app-v/static/js/2.996b7d99.chunk.js.LICENSE.txt"
+    "static/css/main.51c90ef6.chunk.css.map": "/anime-app-v/static/css/main.51c90ef6.chunk.css.map",
+    "static/js/2.1cac0d25.chunk.js.LICENSE.txt": "/anime-app-v/static/js/2.1cac0d25.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.cb9b6900.js",
     "static/css/2.6424772c.chunk.css",
-    "static/js/2.996b7d99.chunk.js",
-    "static/css/main.77ae7fae.chunk.css",
-    "static/js/main.e67d4d3a.chunk.js"
+    "static/js/2.1cac0d25.chunk.js",
+    "static/css/main.51c90ef6.chunk.css",
+    "static/js/main.6bbdbce0.chunk.js"
   ]
 }
