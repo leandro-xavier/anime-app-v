@@ -6,18 +6,22 @@ import '../../../styles/screen/directorio.css'
 
 export const DirectorioScreen = ({cover_image}) => {
 
+    const initialState = 1
     const [comic, setComic] = useState([])
+    const [page, setPage] = useState(initialState)
 
     useEffect(() => {
-        getAllAnime()
-    }, [])
+       getAllAnime()
+    }, [page, setPage])
 
-    const getAllAnime = async() => {
-    const url = 'https://api.aniapi.com/v1/anime';
+    const limit = 20
+
+    const getAllAnime = async () => {
+    const url = `https://api.aniapi.com/v1/anime?page=${page}&per_page=${limit}`;
     const response = await fetch(url);
     const { data } = await response.json()
    
- const anime = data.documents.map(ani => {
+    const anime = data.documents.map(ani => {
         return {
             id: ani.id,
             id_ani: ani.anilist_id,
@@ -29,6 +33,25 @@ export const DirectorioScreen = ({cover_image}) => {
     setComic(anime)
 }
 
+const handleNextPage = () => {
+    if(page >= 719) {
+       console.log('la ultima pagina es 719');
+    }else{
+        setPage(nextPage => nextPage + 1)
+    }
+    
+}
+
+const handlePreviusPage = () => {
+    if(page <= 1){
+        console.log(' es menor a 1');
+    }else{
+        setPage(prevPage => prevPage - 1)
+    }
+        
+}
+  
+console.log(page);
     return (
         <>
      
@@ -44,7 +67,8 @@ export const DirectorioScreen = ({cover_image}) => {
                         </Card> 
             ))
         }
-             
+             <Button style={{margin: '200px'}} variant='danger' onClick={handlePreviusPage}>previus  page</Button>
+             <Button style={{margin: '200px'}} variant='danger' onClick={handleNextPage}>next page</Button>
         </>
     )
 }
