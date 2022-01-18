@@ -4,15 +4,18 @@ import {Card, Button} from 'react-bootstrap';
 
 
 export const DirectorioSongScreen = ({cover_image}) => {
-
+    const initialState = 1
     const [comic, setComic] = useState([])
+    const [page, setPage] = useState(initialState)
 
     useEffect(() => {
         getAllSongs()
-    }, [])
+    }, [page, setPage])
+
+    const limit = 24
 
     const getAllSongs = async() => {
-    const url = 'https://api.aniapi.com/v1/song';
+    const url = `https://api.aniapi.com/v1/song?page=${page}&per_page=${limit}`;
     const response = await fetch(url);
     const { data } = await response.json()
    
@@ -30,6 +33,24 @@ export const DirectorioSongScreen = ({cover_image}) => {
         }
     })  
     setComic(songs)
+}
+
+const handleNextPage = () => {
+    if(page >= 220) {
+       console.log('la ultima pagina es 719');
+    }else{
+        setPage(nextPage => nextPage + 1)
+    }
+    
+}
+
+const handlePreviusPage = () => {
+    if(page <= 1){
+        console.log(' es menor a 1');
+    }else{
+        setPage(prevPage => prevPage - 1)
+    }
+        
 }
 
     return (
@@ -52,7 +73,8 @@ export const DirectorioSongScreen = ({cover_image}) => {
                 </div>
             ))
         }
-             
+              <Button style={{margin: '200px'}} variant='danger' onClick={handlePreviusPage}>previus  page</Button>
+             <Button style={{margin: '200px'}} variant='danger' onClick={handleNextPage}>next page</Button>
         </>
     )
 }
