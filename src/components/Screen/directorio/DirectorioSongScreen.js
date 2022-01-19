@@ -1,23 +1,35 @@
 import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom'
-import {Card, Button} from 'react-bootstrap';
+import {Card, Button, Form, FormControl} from 'react-bootstrap';
+import { useForm } from '../../../hooks/useForm';
 
 
 export const DirectorioSongScreen = ({cover_image}) => {
     const initialState = 1
     const [comic, setComic] = useState([])
     const [page, setPage] = useState(initialState)
+    const [search, setSearch] = useState(''); 
+
+    const [curent, setCurent] = useState(1);
+
+    const [formValues, handleInputChange] = useForm({
+        searchText: ''
+    })
+
+    const {searchText} = formValues
 
     useEffect(() => {
         getAllSongs()
-    }, [page, setPage])
+    }, [page, setPage,search, setCurent])
 
     const limit = 24
 
     const getAllSongs = async() => {
-    const url = `https://api.aniapi.com/v1/song?page=${page}&per_page=${limit}`;
+    const url = `https://api.aniapi.com/v1/song?title=${search}&page=${page}&per_page=${limit}`;
     const response = await fetch(url);
     const { data } = await response.json()
+
+    const current = data.last_page
    
  const songs = data.documents.map(ani => {
         return {
@@ -33,10 +45,17 @@ export const DirectorioSongScreen = ({cover_image}) => {
         }
     })  
     setComic(songs)
+    setCurent(current)
+}
+
+const handleSubmit = (e) => {
+    e.preventDefault()
+   // console.log(formValues);
+    setSearch(searchText)
 }
 
 const handleNextPage = () => {
-    if(page >= 220) {
+    if(page >= curent) {
        console.log('la ultima pagina es 719');
     }else{
         setPage(nextPage => nextPage + 1)
@@ -55,6 +74,22 @@ const handlePreviusPage = () => {
 
     return (
         <>
+         <div className="mx-auto d-inline text-danger">
+            <h1 >Buscar tu cancion de anime favorita</h1>
+        </div>
+       <Form className="d-flex" onSubmit={handleSubmit}>
+        <FormControl
+          type="search"
+          placeholder="Search"
+          className="m-4"
+          aria-label="Search"
+          name='searchText'
+          autoComplete='off'
+            value={searchText}
+            onChange={handleInputChange}
+        />
+        <Button type='submit' variant="outline-danger" className="m-4 ">Search</Button>
+      </Form>
     
         {
             comic.map(son => (
