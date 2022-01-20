@@ -103,7 +103,7 @@ const handlePreviusPage = () => {
       </Form>
         {
             comic.map(goku => (
-                <div style={{ display:'inline-block',alignItems:'center', marginLeft:"40px" }}>
+                <div  key={goku.id} style={{ display:'inline-block',alignItems:'center', marginLeft:"40px" }}>
                     
                         <Card key={goku.id} style={{ width: '200px', height:'500px', float:'left'}}>
                             <Card.Img  variant="top" src={goku.url} />

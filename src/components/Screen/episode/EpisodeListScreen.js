@@ -3,7 +3,7 @@ import {Card} from 'react-bootstrap'
 import { useParams } from 'react-router-dom';
 
 import '../../../styles/screen/episodes.css'
-import { ListScreen } from './ListScreen';
+//import { ListScreen } from './ListScreen';
 
 export const EpisodeListScreen = () => {
 
@@ -51,7 +51,7 @@ export const EpisodeListScreen = () => {
             </div>
 
             <div>
-                <Card style={{width: '40rem', flexDirection: 'right'}}>
+                <Card style={{width: '40rem', flexDirection: 'right', marginTop:'20px'}}>
                     <Card.Header as="h5" style={{color: 'black'}}>Descripcion</Card.Header>
                     <Card.Body>
                         <Card.Title>{comic.titles}</Card.Title>
@@ -59,8 +59,10 @@ export const EpisodeListScreen = () => {
                     </Card.Body>
                 </Card>
             </div>
-            <div>
-                <ListScreen id={comic.id} image={comic.image_cover} trailer={comic.trailer}/>
+            <div className="trailer">
+                <h3>Trailer</h3>
+                <iframe src={comic.trailer} controls="0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                {/*<ListScreen id={comic.id} image={comic.image_cover} trailer={comic.trailer}/>*/}
             </div>
         </>
     )

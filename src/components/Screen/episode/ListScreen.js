@@ -10,7 +10,7 @@ export const ListScreen = (props) => {
 
     useEffect(() => {
         getListEpisode()
-        //eslint-disable-next-line
+        
     }, []);
 
     const {id} = useParams();
@@ -23,9 +23,9 @@ export const ListScreen = (props) => {
             const response = await fetch(url);
             const { data } = await response.json();
 
-            const episodes = data.documents.map( res => {
+            const episodes = await data.documents.map( res => {
                 return {
-                    id: res.anime_id,
+                    id_ani: res.anime_id,
                     title: res.title,
                     chapter: res.number,
                     video: res.video,
