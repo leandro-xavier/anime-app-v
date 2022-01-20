@@ -3,7 +3,7 @@ import { Card } from 'react-bootstrap';
 import { CardMovie } from '../../Cards/CardMovie';
 import { CardSongs } from '../../Cards/CardSongs';
 import { CardBestAnime } from '../../Cards/CardBestAnime';
-
+import './homeStyle.css'
 
 
 export const HomeScreen = ({...props}) => {
@@ -24,7 +24,7 @@ export const HomeScreen = ({...props}) => {
             return {
                 id : resp.id,
                 titleEsp : resp.titles.en,
-                description: resp.description,
+                description: resp.descriptions.en,
                 score: resp.score,
                 cover: resp.cover_image,
             }
@@ -35,14 +35,22 @@ export const HomeScreen = ({...props}) => {
     return (
         <>
             {old.map(dat => (
-                            <Card className="bg-dark text-white">
-                                <Card.Img src={dat.cover} alt="Card image" style={{width:"90%", height: "500px"}}/>
+                <div className="bg-dark text-white" style={{ width:'100%', height:'500px', display:'flex'}}>
+                    <Card style={{width:'60%'}} className="bg-dark text-white">
+                                <Card.Img src={dat.cover} alt="Card image" style={{ margin:'auto', width:"35%", height: "400px"}}/>
                                     <Card.ImgOverlay>
-                                    <Card.Title style={{paddingTop: '20px', width:'600px'}}>{dat.titleEsp}</Card.Title>
+                                    <Card.Title style={{paddingTop: '20px', width:'20%'}}>{dat.titleEsp}</Card.Title>
+                                    <Card.Text style={{paddingTop: '50px', width:'200px'}}>{dat.description}</Card.Text>
                                     <Card.Text style={{paddingTop: '50px', width:'410px'}}>Puntuacion: {dat.score}</Card.Text>
                                     </Card.ImgOverlay>
-                                 
-                            </Card>
+                    </Card>
+
+                    <div style={{backgroundColor:'black',  width:'30%',height: "400px", float:'right', margin:'auto'}}>
+                            <h1 style={{textAlign:'center',  marginTop:'20px'}}>Bienvenido a Anime App</h1>
+                            <p style={{textAlign:'center', marginTop:'40px'}}>Aplicación en la cual puedes buscar tu anime favorito, la canción de tu anime preferido</p>
+                    </div>
+                  
+                </div>
                 ))
             }
                         
@@ -53,12 +61,12 @@ export const HomeScreen = ({...props}) => {
                    </div>
             
                 <aside style={{alignItems:'left', float:'left'}}>
-                   <h1  style={{textAlign:'left', marginTop:'40px', paddingBottom:'15px',color:'white'}}>Canciones del anime 2021</h1>
+                   <h1  style={{textAlign:'left', marginTop:'40px', paddingBottom:'15px',color:'white'}}>Canciones del anime </h1>
                   <CardSongs/>
                </aside>
 
                <div style={{float:'right' }}>
-                   <h1 style={{ textAlign:'center', marginTop:'100px', paddingBottom:'30px',color:'white'}}>mejores animes 2021</h1>
+                   <h1 style={{ textAlign:'center', marginTop:'100px', paddingBottom:'30px',color:'white'}}>Animes</h1>
                    <CardBestAnime/>
                </div>
            

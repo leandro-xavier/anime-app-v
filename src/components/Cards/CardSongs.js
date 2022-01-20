@@ -2,6 +2,7 @@ import React,{useState, useEffect} from 'react';
 import ReactAudioPlayer from 'react-audio-player';
 import { Link } from 'react-router-dom';
 import {Card, Button} from 'react-bootstrap';
+import './cardsong.css'
 
 export const CardSongs = (anime) => {
     const [item, setItem] = useState([])
@@ -11,11 +12,11 @@ export const CardSongs = (anime) => {
     }, []);
 
     const getAnimeSong = async () => {
-    const url = "https://api.aniapi.com/v1/song/?year=2021&season=3&type=0";
+    const url = "https://api.aniapi.com/v1/random/song/6";
     const resp = await fetch(url)
     const {data} = await resp.json()
 
-    const anime = data.documents.map(res => {
+    const anime = data.map(res => {
         return{
             id: res.anime_id,
             title: res.title,
@@ -33,7 +34,7 @@ export const CardSongs = (anime) => {
         <div>
             {
                 item.map(ani => (
-                <Card  key={ani.id} style={{ width: '570px', height:'120px'}}>
+                <Card className='song'  key={ani.id}>
                 <Card.Body>
                     <Card.Title style={{float:'left'}}>{ani.title}</Card.Title>
                     

@@ -48,7 +48,7 @@ export const AnimeSongsScreen = (props) => {
                                 <Card.Body>
                                     <Card.Title style={{ color:'lightcoral' }}>{episo.title}</Card.Title>
                                     <Card.Text style={{ color:'lightcoral' }}></Card.Text>
-                                    <Button variant="white" as={Link} to={`/ver/${props.idSo}`}>ver anime</Button>
+                                    <Button variant="btn btn-dark" as={Link} to={`/ver/${props.idSo}`}>ver anime</Button>
                                 </Card.Body>
                         </Card>
                       

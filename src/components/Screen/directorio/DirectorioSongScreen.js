@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom'
 import {Card, Button, Form, FormControl} from 'react-bootstrap';
 import { useForm } from '../../../hooks/useForm';
+import Swal from 'sweetalert2';
 
 
 export const DirectorioSongScreen = ({cover_image}) => {
@@ -25,27 +26,38 @@ export const DirectorioSongScreen = ({cover_image}) => {
     const limit = 24
 
     const getAllSongs = async() => {
-    const url = `https://api.aniapi.com/v1/song?title=${search}&page=${page}&per_page=${limit}`;
-    const response = await fetch(url);
-    const { data } = await response.json()
 
-    const current = data.last_page
-   
- const songs = data.documents.map(ani => {
-        return {
-            id: ani.id,
-            id_ani: ani.anime_id,
-            title: ani.title,
-            artist: ani.artist,
-            album: ani.album,
-            url_song_online: ani.open_spotify_url,
-            url_song_local: ani.local_spotify_url,
-            year: ani.year,
-            season: ani.season
+        try {
+            const url = `https://api.aniapi.com/v1/song?title=${search}&page=${page}&per_page=${limit}`;
+            const response = await fetch(url);
+            const { data } = await response.json()
+        
+            const current = data.last_page
+           
+         const songs = data.documents.map(ani => {
+                return {
+                    id: ani.id,
+                    id_ani: ani.anime_id,
+                    title: ani.title,
+                    artist: ani.artist,
+                    album: ani.album,
+                    url_song_online: ani.open_spotify_url,
+                    url_song_local: ani.local_spotify_url,
+                    year: ani.year,
+                    season: ani.season
+                }
+            })  
+            setComic(songs)
+            setCurent(current)
+        } catch (error) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'no hay ninguna cancion de anime con ese nombre',
+              })
+            console.log(error)
         }
-    })  
-    setComic(songs)
-    setCurent(current)
+   
 }
 
 const handleSubmit = (e) => {
@@ -74,8 +86,8 @@ const handlePreviusPage = () => {
 
     return (
         <>
-         <div className="mx-auto d-inline text-danger">
-            <h1 >Buscar tu cancion de anime favorita</h1>
+         <div className="mx-auto d-inline text-light">
+            <h1 style={{ margin:'auto', textAlign:'center'}} >Buscar tu cancion de anime favorita</h1>
         </div>
        <Form className="d-flex" onSubmit={handleSubmit}>
         <FormControl
@@ -88,13 +100,13 @@ const handlePreviusPage = () => {
             value={searchText}
             onChange={handleInputChange}
         />
-        <Button type='submit' variant="outline-danger" className="m-4 ">Search</Button>
+        <Button type='submit' variant="outline-light" className="m-4 ">Search</Button>
       </Form>
     
         {
             comic.map(son => (
-                <div>
-                            <Card key={son.id} bg="dark" style={{margin:'12px',width: '200px', height:'250px', float: 'right' }} className="mb-2">
+                <div style={{ display:'inline-block',alignItems:'center', marginLeft:"40px" }}>
+                            <Card key={son.id} bg="dark" style={{ width: '200px', height:'290px', float:'left', margin:'12px'}} className="mb-2">
                             <Card.Header className="text-white"> <span style={{color:'goldenrod'}}>Autor:</span> {son.artist}</Card.Header>
                             <Card.Body>
                             <Card.Title className="text-white"> {son.title} </Card.Title>
@@ -108,8 +120,14 @@ const handlePreviusPage = () => {
                 </div>
             ))
         }
-              <Button style={{margin: '200px'}} variant='danger' onClick={handlePreviusPage}>previus  page</Button>
-             <Button style={{margin: '200px'}} variant='danger' onClick={handleNextPage}>next page</Button>
+               <div style={{display:'inline-block', width:'100%'}} className='grid'>
+            <div style={{ float:'left'}}>
+            <Button style={{margin: '15px'}} variant='danger' onClick={handlePreviusPage} size='md'>previus  page</Button>
+            </div>
+            <div style={{float:'right'}}>
+            <Button style={{margin: '15px'}} variant='danger' onClick={handleNextPage} size='md'>next page</Button>
+            </div>
+        </div>
         </>
     )
 }

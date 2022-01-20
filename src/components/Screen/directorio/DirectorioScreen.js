@@ -4,6 +4,7 @@ import {Card, Button, Form, FormControl} from 'react-bootstrap';
 
 import '../../../styles/screen/directorio.css'
 import { useForm } from '../../../hooks/useForm';
+import Swal from 'sweetalert2';
 
 export const DirectorioScreen = ({cover_image}) => {
 
@@ -28,7 +29,9 @@ export const DirectorioScreen = ({cover_image}) => {
     const limit = 20
 
     const getAllAnime = async () => {
-    const url = `https://api.aniapi.com/v1/anime?title=${search}&page=${page}&per_page=${limit}`;
+
+    try {
+        const url = `https://api.aniapi.com/v1/anime?title=${search}&page=${page}&per_page=${limit}`;
     const response = await fetch(url);
     const { data } = await response.json()
 
@@ -45,9 +48,16 @@ export const DirectorioScreen = ({cover_image}) => {
     })  
     setComic(anime)
     setCurent(current)
-   
+        
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'no hay ningun anime con ese nombre',
+          })
+        console.log(error)
+    }
 }
-
 
 const handleSubmit = (e) => {
     e.preventDefault()
@@ -75,8 +85,8 @@ const handlePreviusPage = () => {
 
     return (
         <>
-        <div className="mx-auto d-inline text-danger">
-            <h1 >Buscar tu anime favorito</h1>
+        <div className="mx-auto d-inline text-light">
+            <h1 style={{ margin:'auto', textAlign:'center'}}>Busca tu anime favorito</h1>
         </div>
        <Form className="d-flex" onSubmit={handleSubmit}>
         <FormControl
@@ -89,22 +99,32 @@ const handlePreviusPage = () => {
             value={searchText}
             onChange={handleInputChange}
         />
-        <Button type='submit' variant="outline-danger" className="m-4 ">Search</Button>
+        <Button type='submit' variant="outline-light" className="m-4 ">Search</Button>
       </Form>
         {
             comic.map(goku => (
-                        <Card key={goku.id} style={{ width: '300px', height:'600px', float: 'right' }}>
+                <div style={{ display:'inline-block',alignItems:'center', marginLeft:"40px" }}>
+                    
+                        <Card key={goku.id} style={{ width: '200px', height:'500px', float:'left'}}>
                             <Card.Img  variant="top" src={goku.url} />
                             <Card.Body>
                                 <Card.Title >{goku.titles}</Card.Title>
                                 <Card.Footer>{goku.year}</Card.Footer>
-                                <Button className="btn btn-dark" as={Link} to={`/ver/${goku.id}`}>ver anime</Button>
+                                <Button variant="btn btn-dark" as={Link} to={`/ver/${goku.id}`}>ver anime</Button>
                             </Card.Body>
-                        </Card> 
+                        </Card>
+                </div>
             ))
         }
-             <Button style={{margin: '200px'}} variant='danger' onClick={handlePreviusPage}>previus  page</Button>
-             <Button style={{margin: '200px'}} variant='danger' onClick={handleNextPage}>next page</Button>
+        <div style={{display:'inline-block', width:'100%'}} className='grid'>
+            <div style={{ float:'left'}}>
+            <Button style={{margin: '20px'}} variant='danger' onClick={handlePreviusPage} size='lg'>previus  page</Button>
+            </div>
+            <div style={{float:'right'}}>
+            <Button style={{margin: '20px'}} variant='danger' onClick={handleNextPage} size='lg'>next page</Button>
+            </div>
+        </div>
+            
         </>
     )
 }
