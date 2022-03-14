@@ -41,7 +41,7 @@ export const HomeScreen = ({...props}) => {
                                 <Card.Img src={dat.cover} alt="Card image" style={{ margin:'auto', width:"35%", height: "400px"}}/>
                                     <Card.ImgOverlay>
                                     <Card.Title style={{paddingTop: '20px', width:'20%'}}>{dat.titleEsp}</Card.Title>
-                                    <Card.Text style={{paddingTop: '50px', width:'200px'}}>{dat.description.length <= 200 ?  removeTags(dat.description) : <h2>La descripcion es muy larga</h2>}</Card.Text>
+                                    <Card.Text style={{paddingTop: '50px', width:'200px'}}>{dat.description.length <= 200 ?  removeTags(dat.description) : <h2>Que va hermano la descripcion es muy larga mejor ve el anime</h2>}</Card.Text>
                                     <Card.Text style={{paddingTop: '50px', width:'410px'}}>Puntuacion: {dat.score}</Card.Text>
                                     </Card.ImgOverlay>
                     </Card>
