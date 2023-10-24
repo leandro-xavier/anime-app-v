@@ -31,13 +31,14 @@ export const DirectorioScreen = ({cover_image}) => {
     const getAllAnime = async () => {
 
     try {
-        const url = `https://api.aniapi.com/v1/anime?title=${search}&page=${page}&per_page=${limit}`;
+    //const url = `https://api.aniapi.com/v1/anime?title=${search}&page=${page}&per_page=${limit}`;
+    const url = `https://api.jikan.moe/v4/anime?q=${search}&page=${page}&limit=${limit}`;
     const response = await fetch(url);
     const { data } = await response.json()
 
     const current = data.last_page
 
-    const anime = data.documents.map(ani => {
+   /* const anime = data.documents.map(ani => {
         return {
             id: ani.id,
             id_ani: ani.anilist_id,
@@ -45,7 +46,17 @@ export const DirectorioScreen = ({cover_image}) => {
             titles: ani.titles.en,
             year: ani.season_year
         }
-    })  
+    })*/  
+
+    const anime = data.map(ani => {
+        return {
+            id: ani.mal_id,
+           // id_ani: ani.anilist_id,
+            url: ani.images.jpg.image_url,
+            titles: ani.title,
+            year: ani.aired.from
+        }
+    })
     setComic(anime)
     setCurent(current)
         

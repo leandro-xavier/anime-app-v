@@ -12,7 +12,7 @@ const [item, setItem] = useState([])
 
 const getAnimeNinja = async () => {
     //const url = "https://api.aniapi.com/v1/random/anime/4/true";
-    const url = " https://api.jikan.moe/v4/anime/1";
+    const url = "https://api.jikan.moe/v4/random/anime";
     const resp = await fetch(url)
     const {data} = await resp.json()
 
