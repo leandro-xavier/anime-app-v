@@ -11,25 +11,39 @@ const [item, setItem] = useState([])
     }, []);
 
 const getAnimeNinja = async () => {
-    const url = "https://api.aniapi.com/v1/random/anime/4/true";
+    //const url = "https://api.aniapi.com/v1/random/anime/4/true";
+    const url = " https://api.jikan.moe/v4/anime/1";
     const resp = await fetch(url)
     const {data} = await resp.json()
 
-    const animeNinja = data.map(res => {
 
-        return  {
-            id: res.id,
-            titles: res.titles.en,
-            description: res.descriptions.it,
-            imagen: res.cover_image,
-            year: res.season_year
-           }
+    const animeNinja = {
+            id: data.mal_id,
+            titles: data.title,
+            description: data.synopsis,
+            imagen: data.images.jpg.image_url,
+            year: data.year
+    }
 
-    })
+    console.log(animeNinja)
+
+    
+   // const animeNinja = data.map(res => {
+
+       // return  {
+         //   id: res.mal_id,
+           // titles: res.title,
+         //   description: res.synopsis,
+          //  imagen: res.images.jpg.image_url,
+          //  year: res.year
+           //}
+
+    //})
     
     setItem(animeNinja)
 }
-    return (       
+    return (  
+        /*     
         <>
         {
             item.map(dat => (
@@ -44,5 +58,17 @@ const getAnimeNinja = async () => {
             ))
         }        
         </>    
+        */
+
+         
+                <Card  key={item.id} style={{ width: '12rem', height:'550px', float:'right'}}>
+                <Card.Img variant="top" src={item.imagen} />
+                <Card.Body>
+                    <Card.Title>{item.titles}</Card.Title>
+                    <Card.Footer>Año de estreno: {item.year}</Card.Footer>
+                    <Button variant="dark" as ={Link} to={`/ver/${item.id}`}>Ver Anime</Button>
+                </Card.Body>
+                </Card>
+            
     )
 }

@@ -10,23 +10,26 @@ export const CardMovie = () => {
     }, []);
 
     const getAnimeMovie = async () => {
-    const url = "https://api.aniapi.com/v1/anime/?formats=2&status=3";
-    const resp = await fetch(url)
-    const {data} = await resp.json()
+    try{
+        const url = "https://api.aniapi.com/v1/anime/?formats=2&status=3";
+        const resp = await fetch(url)
+        const {data} = await resp.json()
 
-    const anime = data.documents.map(res => {
-        return{
-            id: res.id,
-            titles: res.titles.en,
-            description: res.descriptions.it,
-            imagen: res.cover_image,
-            year: res.season_year
-       
-           }
-
-    })
+        const anime = await data.documents.map(res => {
+            return{
+                id: res.id,
+                titles: res.titles.en,
+                description: res.descriptions.it,
+                imagen: res.cover_image,
+                year: res.season_year
+               }
     
+        })
+            
     setItem(anime)
+    }catch (e) {
+      console.log(e)
+     }
 }
     return (
         <div>
