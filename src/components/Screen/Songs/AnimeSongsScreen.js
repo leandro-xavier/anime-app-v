@@ -20,7 +20,7 @@ export const AnimeSongsScreen = (props) => {
     const getListEpisode = async () => {
 
         try{
-            const url = `https://api.aniapi.com/v1/anime/${id}`;
+            const url = `https://api.jikan.moe/v4/manga/${id}`;
             const response = await fetch(url);
             const { data } = await response.json();
             console.log(data);
@@ -28,9 +28,9 @@ export const AnimeSongsScreen = (props) => {
             
             const episodes = 
                  {
-                    id: data.anime_id,
-                    title: data.titles.en,
-                    image: data.cover_image
+                    id: data.mal_id,
+                    title: data.title,
+                    image: data.images.jpg.image_url
                 }
             
             setEpiso(episodes)
@@ -48,7 +48,7 @@ export const AnimeSongsScreen = (props) => {
                                 <Card.Body>
                                     <Card.Title style={{ color:'lightcoral' }}>{episo.title}</Card.Title>
                                     <Card.Text style={{ color:'lightcoral' }}></Card.Text>
-                                    <Button variant="btn btn-dark" as={Link} to={`/ver/${props.idSo}`}>ver anime</Button>
+                                    <Button variant="btn btn-dark" as={Link} to={`/ver/${props.idSo}`}>ver manga</Button>
                                 </Card.Body>
                         </Card>
                       

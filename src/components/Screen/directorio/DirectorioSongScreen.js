@@ -28,23 +28,26 @@ export const DirectorioSongScreen = ({cover_image}) => {
     const getAllSongs = async() => {
 
         try {
-            const url = `https://api.aniapi.com/v1/song?title=${search}&page=${page}&per_page=${limit}`;
+           // const url = `https://api.aniapi.com/v1/song?title=${search}&page=${page}&per_page=${limit}`;
+           const url = `https://api.jikan.moe/v4/manga?q=${search}&page=${page}&limit=${limit}`;
+         
             const response = await fetch(url);
             const { data } = await response.json()
         
             const current = data.last_page
            
-         const songs = data.documents.map(ani => {
+         const songs = data.map(ani => {
                 return {
-                    id: ani.id,
-                    id_ani: ani.anime_id,
+                    id: ani.mal_id,
+                   // id_ani: ani.anime_id,
                     title: ani.title,
-                    artist: ani.artist,
-                    album: ani.album,
-                    url_song_online: ani.open_spotify_url,
-                    url_song_local: ani.local_spotify_url,
-                    year: ani.year,
-                    season: ani.season
+                    artist: ani.synopsis,
+                    album: ani.popularity,
+                    score: ani.score,
+                    chapters: ani.chapters,
+                    year: ani.published.prop.from.year,
+                    season: ani.type,
+                    url: ani.images.jpg.image_url
                 }
             })  
             setComic(songs)
@@ -105,19 +108,19 @@ const handlePreviusPage = () => {
     
         {
             comic.map(son => (
-                <div style={{ display:'inline-block',alignItems:'center', marginLeft:"40px" }}>
-                            <Card key={son.id} bg="dark" style={{ width: '200px', height:'290px', float:'left', margin:'12px'}} className="mb-2">
-                            <Card.Header className="text-white"> <span style={{color:'goldenrod'}}>Autor:</span> {son.artist}</Card.Header>
-                            <Card.Body>
-                            <Card.Title className="text-white"> {son.title} </Card.Title>
-                            <Card.Text className="text-white">
-                            {son.year}
-                            </Card.Text>
-                            <Button className="btn btn-light" as={Link} to={`/ver/song/${son.id}`}>ver cancion</Button>
-                            </Card.Body>
-                            </Card>
-  
-                </div>
+                
+<div style={{ display:'inline-block',alignItems:'center', marginLeft:"40px" }}>
+                    
+<Card key={son.id} style={{ width: '200px', height:'500px', float:'left'}}>
+    <Card.Img  variant="top" src={son.url} />
+    <Card.Body>
+        <Card.Title >{son.title}</Card.Title>
+        <Card.Footer>{son.year}</Card.Footer>
+        <Button variant="btn btn-dark" as={Link} to={`/ver/song/${son.id}`}>ver manga</Button>
+    </Card.Body>
+</Card>
+
+</div>
             ))
         }
                <div style={{display:'inline-block', width:'100%'}} className='grid'>
