@@ -13,44 +13,49 @@ export const CardSongs = (anime) => {
 
     const getAnimeSong = async () => {
   //  const url = "https://api.aniapi.com/v1/random/song/6";
-  const url = "https://api.jikan.moe/v4/manga/1";
+  const url = "https://api.jikan.moe/v4/seasons/upcoming?limit=3";
     const resp = await fetch(url)
     const {data} = await resp.json()
 
-   /* const anime = data.map(res => {
+   const anime = data.map(res => {
         return{
-            id: res.anime_id,
+            id: res.mal_id,
             title: res.title,
-            artist: res.artist,
+            season: res.season,
             album: res.album,
             year: res.year,
-            url_pre: res.preview_url
+            url_pre: res.images.jpg.image_url
            }
 
-    })*/
+    })
 
-    const anime = {
-            id: data.mal_id,
-            title: data.title,
-            artist: data.type,
-            album: data.status,
-            year: data.chapters
+   // const anime = {
+    //        id: data.mal_id,
+       //     title: data.title,
+         
+       //artist: data.type,
+    //        album: data.status,
+    //        year: data.chapters
            // url_pre: res.preview_url
-           }
+  //         }
     
     setItem(anime)
 }
     return (
-        <div>
-             <Card className='song'  key={anime.id}>
+<div>
+        {
+            item.map(ani => (
+                <Card className='song'  key={ani.id}>
                 <Card.Body>
-                    <Card.Title style={{float:'left'}}>{anime.title}</Card.Title>
-                    
-                    <Button style={{float:'right' , marginRight:'5px', marginTop:'40px'}} variant="dark" as ={Link} to={`/ver/song/${anime.id}`}>ver cancion</Button>
+                    <Card.Title style={{float:'left'}}>{ani.title}</Card.Title>
+                    <Card.Img style={{float:'left', width:'80px', height:'80px'}} src={ani.url_pre} />
+                    <Button style={{float:'right' , marginRight:'5px', marginTop:'40px'}} variant="dark" as ={Link} to={`/ver/song/${ani.id}`}>Informacion de estreno</Button>
                     
                 </Card.Body>
                
                 </Card>
+            ))
+        }
         </div>
     )
 }

@@ -11,17 +11,19 @@ export const CardMovie = () => {
 
     const getAnimeMovie = async () => {
     try{
-        const url = "https://api.aniapi.com/v1/anime/?formats=2&status=3";
+        //const url = "https://api.aniapi.com/v1/anime/?formats=2&status=3";
+        const url = "https://api.jikan.moe/v4/top/anime?limit=3";
+
         const resp = await fetch(url)
         const {data} = await resp.json()
 
-        const anime = await data.documents.map(res => {
+        const anime = await data.map(res => {
             return{
-                id: res.id,
-                titles: res.titles.en,
-                description: res.descriptions.it,
-                imagen: res.cover_image,
-                year: res.season_year
+                id: res.mal_id,
+                titles: res.title,
+                description: res.synopsis,
+                imagen: res.images.jpg.image_url,
+                year: res.year
                }
     
         })

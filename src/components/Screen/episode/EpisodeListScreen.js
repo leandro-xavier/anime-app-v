@@ -17,22 +17,22 @@ export const EpisodeListScreen = () => {
     const {id} = useParams();
 
     const getAnime = async() => {
-        const url = `https://api.aniapi.com/v1/anime/${id}`;
+        const url = `https://api.jikan.moe/v4/anime/${id}`;
         const response = await fetch(url);
         const {data} = await response.json();
-        console.log(data);
+      
 
         
         const anime = {
-            id: data.id,
-            titles: data.titles.en,
-            description: data.descriptions.en,
+            id: data.mal_id,
+            titles: data.title,
+            description: data.synopsis,
             //genres: data.genres.map(res => {return res.genres}),
-            image_cover: data.cover_image,
-            banner_image: data.banner_image,
+            image_cover: data.images.jpg.image_url,
+            banner_image: data.images.jpg.large_image_url,
             score: data.score,
-            season: data.start_date,
-            trailer: data.trailer_url
+            season: data.season,
+            trailer: data.trailer.embed_url
         }
         setComic(anime)
     }

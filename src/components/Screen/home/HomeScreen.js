@@ -64,17 +64,17 @@ export const HomeScreen = ({...props}) => {
             
                 
                    <div style={{float:'right'}}>
-                       <h1 style={{textAlign:'center', marginTop:'40px', paddingBottom:'15px', color:'white'}}>Peliculas canceladas</h1>
+                       <h1 style={{textAlign:'center', marginTop:'40px', paddingBottom:'15px', color:'white'}}>Top mejor rank anime</h1>
                    <CardMovie/>
                    </div>
             
                 <aside style={{alignItems:'left', float:'left'}}>
-                   <h1  style={{textAlign:'left', marginTop:'40px', paddingBottom:'15px',color:'white'}}>Canciones del anime </h1>
+                   <h1  style={{textAlign:'left', marginTop:'40px', paddingBottom:'15px',color:'white'}}>Proximos estrenoos</h1>
                   <CardSongs/>
                </aside>
 
                <div style={{float:'right' }}>
-                   <h1 style={{ textAlign:'center', marginTop:'100px', paddingBottom:'30px',color:'white'}}>Animes</h1>
+                   <h1 style={{ textAlign:'center', marginTop:'100px', paddingBottom:'30px',color:'white'}}>Animes de la temporada</h1>
                    <CardBestAnime/>
                </div>
            
